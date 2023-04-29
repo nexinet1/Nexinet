@@ -2,135 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Orbitron&display=swap" rel="stylesheet">
-    <title>Nexinet</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Viewer</title>
     <style>
-        * {
-          box-sizing: border-box;
-        }
-        
-        body {
-          margin: 0;
-          font-family: 'Fredericka the Great', cursive;
-          font-family: 'Orbitron', sans-serif;
-          font-size: 17px;
-        }
-        
-        header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px;
-          background-color: rgba(0, 0, 0, 0.5);
-        }
-        
-        nav {
-          display: flex;
-        }
-        
-        nav a {
-          display: block;
-          padding: 10px;
-          margin: 0 5px;
-          color: #fff;
-          text-decoration: none;
-          text-transform: uppercase;
-          font-weight: bold;
-        }
-        
-        nav a:hover {
-          background-color: #ddd;
-          color: #000;
-        }
-        
-        #myVideo {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        
-        .content {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          text-align: center;
-          padding: 20px;
-          background-color: rgba(0, 0, 0, 0.5);
-          color: #fff;
-          width: 90%;
-          max-width: 800px;
-        }
-        
-        #r {
-          color: red;
-          font-size: 60px;
-          margin-top: 0;
-        }
-        
-        #b {
-          color: red;
-          margin-bottom: 20px;
-        }
-        
-        @media (max-width: 768px) {
-          .content {
-            width: 95%;
-          }
-          
-          nav {
-            flex-direction: column;
-            align-items: center;
-          }
-          
-          nav a {
-            margin: 5px 0;
-          }
-          
-          #r {
-            font-size: 40px;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          #r {
-            font-size: 30px;
-          }
-        }
+      /* Center the form horizontally */
+#url-form {
+  display: flex;
+  justify-content: center;
+  background-color: #e40303;
+}
+body {
+  background-color: rgb(5, 4, 29);
+}
+h1 {
+  color: #e40303;
+}
+h4 {
+  color: #e40303;
+}
+
+/* Style the form label */
+label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Style the form input */
+#url-input {
+  width: 400px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #e40303;
+  border-radius: 10px;
+}
+
+/* Style the form button */
+button[type="submit"] {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #000408;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Style the iframe container */
+#website-iframe {
+  margin: 20px auto;
+  display: block;
+}
+
     </style>
-        
-</head>
-<body>
+  </head>
+  <body>
+    <h1>Black Website Viewer</h1>
+    <h4>must enter https://bing.com for it to work it uses bing API</h4>
+    <form id="url-form">
+      <label for="url-input">Enter a website URL:</label>
     
-
-
-    <div class="content">
-        <h1 id="r">Nexinet Software</h1>
-        <p id="b">Connecting the world, one device at a time. Our innovative wireless infrastructure technology paves the way for seamless and limitless connectivity, empowering individuals and businesses to stay connected and reach their full potential, anywhere and everywhere <br>Goto: nexinetstayconnected@outlook.com</p>
-        
-        <p>"Introducing our revolutionary wireless infrastructure technology that connects multiple devices without the need for physical hardware, allowing for seamless connectivity anywhere. Experience the power of our cutting-edge network architecture with our downloadable software and phone app."
-          Owner/Founder BRIAN WESSON
-
-          </p>  
-    </div>
-    <video id="my-video" autoplay muted loop width="100%">
-        <source src="g.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-    
-
-
-
-</body>
+      <input type="text" id="url-input" name="url" required>
+      <button type="submit">Go</button>
+    </form>
+    <hr>
+    <iframe id="website-iframe" src="" style="width:100%; height:900px; border:none;"></iframe>
+    <script>
+      const urlForm = document.getElementById("url-form");
+      const websiteIframe = document.getElementById("website-iframe");
+      
+      urlForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const urlInput = document.getElementById("url-input");
+        const url = urlInput.value;
+        websiteIframe.src = url;
+        urlInput.value = "";
+      });
+    </script>
+  </body>
 </html>
